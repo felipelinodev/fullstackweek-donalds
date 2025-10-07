@@ -34,8 +34,6 @@ const RestaurantMenuPage = async ({
     },
   });
 
-  console.log(restaurant?.menuCategories);
-
   if (!restaurant) {
     return notFound();
   }

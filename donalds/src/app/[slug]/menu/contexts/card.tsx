@@ -4,7 +4,7 @@ import { Product } from "@prisma/client";
 import { Pick } from "@prisma/client/runtime/library";
 import { createContext, ReactNode, useState } from "react";
 
-interface CartProduct
+export interface CartProduct
   extends Pick<Product, "id" | "name" | "price" | "imageUrl"> {
   quantity: number;
 }

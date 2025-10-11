@@ -1,5 +1,6 @@
 "use server";
 import { ConsumptionMethod } from "@prisma/client";
+import { redirect } from "next/navigation";
 
 import { db } from "@/lib/prisma";
 
@@ -24,7 +25,7 @@ export const createOrder = async (input: CreateOrderInput) => {
     },
   });
   if (!restaurant) {
-    throw new Error("Restaurant nor found");
+    throw new Error("Restaurant not found");
   }
 
   const productsWithPrices = await db.product.findMany({
@@ -59,4 +60,5 @@ export const createOrder = async (input: CreateOrderInput) => {
       restaurantId: restaurant.id,
     },
   });
+  redirect(`/${input.slug}/orders`);
 };
